@@ -150,11 +150,10 @@ func (c *Client) pubMessages(in, out chan *Message, doneGen, donePub chan bool) 
 		SetClientID(fmt.Sprintf("mqtt-benchmark-%v-%v", time.Now(), c.ID)).
 		SetCleanSession(true).
 		SetConnectTimeout(3* time.Second).
-		SetAutoReconnect(false).
+		SetAutoReconnect(true).
 		SetOnConnectHandler(onConnected).
 		SetConnectionLostHandler(func(client mqtt.Client, reason error) {
-			donePub <- true
-			log.Printf("CLIENT %v lost connection to the broker: %v. And will not reconnect.\n", c.ID, reason.Error())
+			log.Printf("CLIENT %v lost connection to the broker: %v. but will reconnect.\n", c.ID, reason.Error())
 		})
 	if c.BrokerUser != "" && c.BrokerPass != "" {
 		opts.SetUsername(c.BrokerUser)

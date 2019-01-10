@@ -62,20 +62,20 @@ type JSONResults struct {
 func main() {
 
 	var (
-		broker   = flag.String("broker", "tcp://localhost:1883", "MQTT broker endpoint as scheme://host:port")
-		topic    = flag.String("topic", "/test", "MQTT topic for outgoing messages")
-		username = flag.String("username", "", "MQTT username (empty if auth disabled)")
-		password = flag.String("password", "", "MQTT password (empty if auth disabled)")
-		qos      = flag.Int("qos", 1, "QoS for published messages")
-		size     = flag.Int("size", 100, "Size of the messages payload (bytes)")
-		count    = flag.Int("count", 100, "Number of messages to send per client")
-		msgtimeout  = flag.Int("msgtimeout", 50, "Timeout (ms) when send message to broker")
-		msgdelay    = flag.Int("msgdelay", 0, "Delay (ms) between send each message")
-		delay    = flag.Int("delay", 50, "Delay (ms) between start each client")
-		clients  = flag.Int("clients", 10, "Number of clients to start")
-		format   = flag.String("format", "text", "Output format: text|json")
-		quiet    = flag.Bool("quiet", false, "Suppress logs while running")
-		cpu  = flag.Int("cpu", 1, "Number of cpu to use")
+		broker     = flag.String("broker", "tcp://localhost:1883", "MQTT broker endpoint as scheme://host:port")
+		topic      = flag.String("topic", "/test", "MQTT topic for outgoing messages")
+		username   = flag.String("username", "", "MQTT username (empty if auth disabled)")
+		password   = flag.String("password", "", "MQTT password (empty if auth disabled)")
+		qos        = flag.Int("qos", 1, "QoS for published messages")
+		size       = flag.Int("size", 100, "Size of the messages payload (bytes)")
+		count      = flag.Int("count", 100, "Number of messages to send per client")
+		msgtimeout = flag.Int("msgtimeout", 50, "Timeout (ms) when send message to broker")
+		msgdelay   = flag.Int("msgdelay", 0, "Delay (ms) between send each message")
+		delay      = flag.Int("delay", 50, "Delay (ms) between start each client")
+		clients    = flag.Int("clients", 10, "Number of clients to start")
+		format     = flag.String("format", "text", "Output format: text|json")
+		quiet      = flag.Bool("quiet", false, "Suppress logs while running")
+		cpu        = flag.Int("cpu", 1, "Number of cpu to use")
 	)
 	// set number of thread to use
 	runtime.GOMAXPROCS(*cpu)
@@ -100,7 +100,7 @@ func main() {
 			MsgSize:    *size,
 			MsgCount:   *count,
 			MsgTimeOut: *msgtimeout,
-			MsgDelay:	*msgdelay,
+			MsgDelay:	  *msgdelay,
 			MsgQoS:     byte(*qos),
 			Quiet:      *quiet,
 		}
